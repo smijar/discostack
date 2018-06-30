@@ -10,6 +10,9 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# mongodb data files
+mongodb/data/db/
+
 # Package Files #
 *.jar
 *.war
