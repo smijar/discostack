@@ -1,0 +1,39 @@
+version: '2.1'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  person-svc:
+    image: sparquelabs/person-svc:0.1.0
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo-svc
+    #volumes:
+    #  - ${PWD}/wait-for-it.sh:/wait-for-it.sh
+
+  product-svc:
+    image: sparquelabs/product-svc:0.1.0
+    ports:
+      - 8081:8080
+    depends_on:
+      - mongo-svc
+    #volumes:
+    #  - ${PWD}/wait-for-it.sh:/wait-for-it.sh
+
+  mongo-svc:
+    image: 'mongo:4.0'
+    ports:
+      - "27017:27017"
+    volumes:
+      - './mongodb/data/db:/data/db'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      #- MONGODB_EXTRA_FLAGS=--wiredTigerCacheSizeGB=2
+
+  #myapp:
+  #  image: 'YOUR_APPLICATION_IMAGE'
+  #  networks:
+  #    - app-tier
