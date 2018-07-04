@@ -1,5 +1,5 @@
-# Disco Stack
-Discovery, Configuration, Traffic-shaping Stack that helps to do dynamic routing based on multiple versions, service health, traffic-shaping, canary, A/B testing in production for existing Physical/VM environments/Container environments, with or without Kubernetes.
+# Disco Stack for Microservices
+Discovery, Configuration, Traffic-shaping Stack that helps to perform dynamic routing to microservices based on multiple versions, service health, traffic-shaping, canary, A/B testing in production for existing Physical/VM environments/Container environments, with or without Kubernetes.
 
 ## Background
 Enterprises today run a variety of services with a variety and mix of environments including physical servers, Virtual Machines, and now containers.  Services that interface with each other can exist across a mix of those environments.
@@ -13,10 +13,10 @@ The reason behind this is because enterprises need time to transition all their 
 What can they use in the meantime to get similar benefits?  They can use the Disco stack to get similar benefits with their existing processes, existing deployments, using existing provisioning tools, existing CI/CD pipelines, existing production monitoring tools and processes.
 
 ## Description
-The Disco stack uses Consul from Hashicorp for service discovery and registration, as a key-value pair configuration store, and uses Vault from Hashicorp for storing secrets, and Fabio from eBay as a reverse-proxy webserver, to route requests according to traffic shaping rules.  Please note that the Disco stack can also support etcd3 as a configuration store alternative.
+The Disco stack uses Consul from Hashicorp for service and microservice based service discovery and registration, as a key-value pair configuration store, and uses Vault from Hashicorp for storing secrets, and Fabio from eBay as a reverse-proxy webserver, to route requests according to traffic shaping rules.  Please note that the Disco stack can also support etcd3 as a configuration store alternative.
 
 ### Service Registration and Discovery using Consul
-Services during startup register themselves with Consul, and can also opt retrieve their configuration from Consul.  This incldues Databases, and other infrastructure services.  This way, Consul acts as the single source of truth for the location of any service, and the location for which can be moved dynamically.
+Services including microservices, DBs, queueing systems, etc.  during startup register themselves with Consul, and can also opt retrieve their configuration from Consul.  This incldues Databases, and other infrastructure services.  This way, Consul acts as the single source of truth for the location of any service, and the location for which can be moved dynamically.
 
 Services can be completely devoid of configuration or persisted state where they need to keep track of their dependencies, and can rely on using querying Consul to get that information as needed.
 
